@@ -1,0 +1,26 @@
+[Unit]
+Description=ROT13 demo service
+Requires=network.target
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=calibre
+Group=calibre
+Environment=CALIBRE_AUTH_ROOT=/srv/calibre/calibre-auth
+Environment=CALIBRE_AUTH_HOST=127.0.0.1
+Environment=CALIBRE_AUTH_PORT=8520
+EnvironmentFile=-/etc/defaults/calibre-auth
+ExecStart=/usr/bin/perl \
+  -I ${CALIBRE_AUTH_ROOT}/local/lib/perl5 \
+  -I ${CALIBRE_AUTH_ROOT}/lib \
+  ${CALIBRE_AUTH_ROOT}/local/lib/bin/plackup \
+  --app ${CALIBRE_AUTH_ROOT}/app.psgi \
+  --host ${CALIBRE_AUTH_HOST} \
+  --port ${CALIBRE_AUTH_PORT} \
+  --server Gazelle \
+  --env deployment
+
+[Install]
+WantedBy=multi-user.target
