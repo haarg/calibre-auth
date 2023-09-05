@@ -1,0 +1,41 @@
+body {
+  margin: 0.25em;
+  background-color: #222222;
+  color: #dddddd;
+  font-family: sans-serif;
+}
+.login-form, .logout-form {
+  margin: auto;
+  width: 30em;
+  margin-top: 10em;
+  border: 1px solid #000;
+  border-radius: 2ex;
+  background-color: #444;
+  padding: 1em;
+}
+
+h2 {
+  text-align: center;
+  margin: 0 0 0.8em;
+}
+
+#username, #password {
+  display: block;
+  width: 25em;
+  margin: 0 auto 0.5em;
+}
+
+.login-button, .logout-button {
+  display: block;
+  width: 10em;
+  font-size: 1.2em;
+  margin: 0 auto;
+}
+
+.error {
+  height: 2em;
+  line-height: 2em;
+  color : #f33;
+  text-align: center;
+  text-shadow: 1px 1px 1px #000;
+}

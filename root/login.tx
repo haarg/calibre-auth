@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <link href="[% $root %]static/styles.css" rel="stylesheet" type="text/css" />
+    <script src="[% $root %]static/main.js" type="text/javascript" defer></script>
+    <link rel="shortcut icon" href="[% $calibre_root %]favicon.png" />
+  </head>
+  <body>
+    <form method="post">
+      <div class="login-form">
+        <h2>Calibre Login</h2>
+        <div>
+          <input id="username" type="text" name="username" value="[% $username %]" placeholder="Username" />
+        </div>
+        <div>
+          <input id="password" type="password" name="password" placeholder="Password" />
+        </div>
+        <div class="error">[% $error %]</div>
+        <div class="footer">
+          <input class="login-button" type="submit" value="Log in" />
+        </div>
+      </div>
+    </form>
+  </body>
+</html>
