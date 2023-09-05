@@ -282,7 +282,7 @@ sub login ($self, $req) {
     $vars{username} = $user
       if defined $user;
     $vars{error} = 'Invalid username or password!';
-    $status = 400;
+    $status = 401;
   }
 
   return [
