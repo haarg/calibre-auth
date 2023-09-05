@@ -254,7 +254,11 @@ sub auth ($self, $req) {
   my $password = $data->[0][0];
 
   my $auth_header = 'Basic ' . encode_base64($user . ':' . $password, '');
-  return [200, [ 'X-Calibre-Auth-Header' => $auth_header ], [ '' ] ];
+  return [200, [
+    'Vary' => 'Cookie',
+    'Cache-Control' => 'max-age=3600',
+    'X-Calibre-Auth-Header' => $auth_header,
+  ], [ '' ] ];
 }
 
 sub login ($self, $req) {
