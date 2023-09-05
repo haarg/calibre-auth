@@ -1,4 +1,5 @@
 requires 'Config::General';
+requires 'Plack::Middleware::ReverseProxy';
 requires 'Config::ZOMG';
 requires 'Cpanel::JSON::XS';
 requires 'Crypt::Passphrase';
