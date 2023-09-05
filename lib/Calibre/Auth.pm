@@ -244,12 +244,12 @@ sub check_password ($self, $user, $password, $rehash = 0) {
 
 sub auth ($self, $req) {
   $req->env->{'psgix.session'}->{logged_in}
-    or return [400, [], []];
+    or return [401, [], []];
   my $user = $req->env->{'psgix.session'}->{user}
-    or return [400, [], []];
+    or return [401, [], []];
 
   my $data = $self->dbh->selectall_arrayref('SELECT pw FROM users WHERE name = ?', {}, $user);
-  return [400, [], []]
+  return [401, [], []]
     if !@$data == 1;
   my $password = $data->[0][0];
 
