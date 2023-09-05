@@ -203,11 +203,11 @@ sub change_pw ($self, $req) {
   my $new_pw = $req->body_parameters->get('newpw');
 
   if (!$self->check_password($user, $old_pw)) {
-    return [ 400, [ 'Content-Type' => 'text/plain; charset=UTF-8' ], [ 'Existing password is incorrect' ] ];
+    return [ 401, [ 'Content-Type' => 'text/plain; charset=UTF-8' ], [ 'Existing password is incorrect' ] ];
   }
 
   $self->set_password($user, $new_pw);
-  return [ 400, [ 'Content-Type' => 'text/plain; charset=UTF-8' ], [ "password for $user changed" ] ];
+  return [ 200, [ 'Content-Type' => 'text/plain; charset=UTF-8' ], [ "password for $user changed" ] ];
 }
 
 sub set_password ($self, $user, $password) {
