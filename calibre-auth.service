@@ -1,11 +1,11 @@
 [Unit]
-Description=ROT13 demo service
+Description=Calibre Auth Server
 Requires=network.target
 
 [Service]
 Type=simple
-Restart=always
-RestartSec=1
+#Restart=always
+#RestartSec=1
 User=calibre
 Group=calibre
 Environment=CALIBRE_AUTH_ROOT=/srv/calibre/calibre-auth
@@ -15,7 +15,7 @@ EnvironmentFile=-/etc/defaults/calibre-auth
 ExecStart=/usr/bin/perl \
   -I ${CALIBRE_AUTH_ROOT}/local/lib/perl5 \
   -I ${CALIBRE_AUTH_ROOT}/lib \
-  ${CALIBRE_AUTH_ROOT}/local/lib/bin/plackup \
+  ${CALIBRE_AUTH_ROOT}/local/bin/plackup \
   --app ${CALIBRE_AUTH_ROOT}/app.psgi \
   --host ${CALIBRE_AUTH_HOST} \
   --port ${CALIBRE_AUTH_PORT} \
