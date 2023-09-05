@@ -5,5 +5,6 @@ use Calibre::Auth;
 
 builder {
   enable 'ReverseProxy';
-  Calibre::Auth->new->to_app;
+  mount '/auth' => Calibre::Auth->new->to_app;
+  mount '/' => sub { [ 404, [ 'Content-Type' => 'text/plain' ], [ 'Not Found' ] ] };
 };
