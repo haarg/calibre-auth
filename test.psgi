@@ -37,20 +37,17 @@ builder {
     enable sub ($app) {
       sub ($env) {
         delete $env->{HTTP_ACCEPT_ENCODING};
-        Plack::Util::response_cb($app->($env), sub ($res) {
-          push @{ $res->[1] }, 'Link', "</$auth_mount/static/calibre-extras.css>;rel=stylesheet";
-        });
+        $app->($env);
       };
     };
     enable 'SimpleContentFilter', (
       filter => sub {
         s{ To log in as a different user, you will have to restart the browser\.}{};
         s{, you will be asked for the new password the next time the browser has to contact the calibre server}{};
-#        s{(</head>)}{
-#          <link rel="stylesheet" href="/auth/static/calibre-extras.css" type="text/css">
-#          <script src="/auth/static/calibre-extras.js" type="text/javascript" defer></script>
-#          $1
-#        };
+        s{(<title>calibre</title>)}{
+          $1
+          <link rel="stylesheet" href="/auth/static/calibre-extras.css" type="text/css">
+        };
         s{(create_button\(_\("Change password"\),)}{
           create_button(_("Logout"), null, function() {
             var logout_xhr = new XMLHttpRequest();
