@@ -297,11 +297,19 @@ sub login ($self, $req) {
 }
 
 sub logout ($self, $req) {
+  $req->env->{'psgix.session'}->{logged_in}
+    or return [401, [], []];
+  my $user = $req->env->{'psgix.session'}->{user}
+    or return [401, [], []];
+
   my %vars;
 
   if ($req->method eq 'POST') {
     $req->env->{'psgix.session'}->{logged_in} = 0;
-    return [ 200, [ 'Content-Type' => 'text/plain; charset=UTF-8' ], [ 'Logged out' ] ];
+    return [ 302, [
+      'Content-Type' => 'text/plain; charset=UTF-8',
+      'Location'     => $self->calibre_root,
+    ], [ 'Logged out' ] ];
   }
 
   return [
