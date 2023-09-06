@@ -1,3 +1,11 @@
 body a[href="https://calibre-ebook.com/donate"] {
   visibility: hidden;
 }
+
+/* colors for load screen, overwritten by calibre */
+@media (prefers-color-scheme: dark) {
+  html body {
+    background-color: #2d2d2d;
+    color: #ddd;
+  }
+}
