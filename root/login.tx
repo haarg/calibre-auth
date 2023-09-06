@@ -7,13 +7,13 @@
   </head>
   <body>
     <form method="post">
-      <div class="login-form">
+      <div class="dialog">
         <h2>Calibre Login</h2>
         <div>
-          <input id="username" type="text" name="username" value="[% $username %]" placeholder="Username" />
+          <input class="input" id="username" type="text" name="username" value="[% $username %]" placeholder="Username" />
         </div>
         <div>
-          <input id="password" type="password" name="password" placeholder="Password" />
+          <input class="input" id="password" type="password" name="password" placeholder="Password" />
         </div>
         <div class="error">[% $error %]</div>
         <div class="footer">

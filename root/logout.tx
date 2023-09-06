@@ -6,10 +6,10 @@
     <link rel="shortcut icon" href="[% $calibre_root %]favicon.png" />
   </head>
   <body>
-    <div class="logout-form">
+    <div class="dialog">
       <form method="post">
-        <div>
-          <input class="logout-button" type="submit" value="Log out" />
+        <div class="footer">
+          <input type="submit" value="Log out" />
         </div>
       </form>
     </div>
